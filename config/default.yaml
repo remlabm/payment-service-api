@@ -1,0 +1,9 @@
+
+Security:
+  saltWorkFactor: 10
+  tokenTTL: 604800 # 7 days
+
+PayPal:
+  mode: sandbox
+  client_id: abc123
+  client_secret: zyx987

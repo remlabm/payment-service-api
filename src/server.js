@@ -3,6 +3,10 @@ var CONFIG = require('config')
   , restify = require('restify')
   ;
 
+// Load Models
+// ----------------------------------------------------------------------------
+require( './models/payment');
+
 // HTTP Server
 // ----------------------------------------------------------------------------
 var server = restify.createServer( {
@@ -22,6 +26,8 @@ server.use( [
   ]
 );
 
+var payment = require('./controllers/payments');
+
 // Routes
 // ----------------------------------------------------------------------------
 // Echo
@@ -34,16 +40,10 @@ server.get('/echo', function( req, res, next ){
 //server.use( restifyOAuth2.mustBeAuthorized() );
 
 // Payments CRUD
-server.get( '/payments', function( req, res, next ){
+server.get( '/payments', payment.search );
 
-});
+server.post( '/payments', payment.request );
 
-server.post( '/payments', function( req, res, next ){
-
-});
-
-server.get( '/payments/:id', function( req, res, next ){
-
-});
+server.get( '/payments/:id', payment.findOne );
 
 module.exports = server;
