@@ -6,7 +6,6 @@ Logger = require 'bunyan'
 global.chai = require 'chai'
 global.assert = chai.assert
 
-require './schemas' ## Load schemas
 
 global.log = new Logger {
   name: 'payment-service-api-test'
